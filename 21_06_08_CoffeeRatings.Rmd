@@ -1,0 +1,20 @@
+---
+title: "Coffee ratings"
+author: "Julia Müller"
+date: "21 7 2020"
+output: html_document
+---
+
+Data source: https://github.com/rfordatascience/tidytuesday/blob/2e9bd5a67e09b14d01f616b00f7f7e0931515d24/data/2020/2020-07-07/readme.md
+
+Let's read in the data and get a first impression! The Tidy Tuesday site includes a link to read in the data and information on the variables. 
+
+# Importing data and package(s)
+```{r}
+library(tidyverse)
+
+coffee <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-07/coffee_ratings.csv')
+```
+
+Which options do we have to explore the data?
+
