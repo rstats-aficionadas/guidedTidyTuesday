@@ -18,3 +18,11 @@ coffee <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 
 Which options do we have to explore the data?
 
+```{r}
+head(coffee)
+
+summary(coffee)
+
+str(coffee)
+```
+
