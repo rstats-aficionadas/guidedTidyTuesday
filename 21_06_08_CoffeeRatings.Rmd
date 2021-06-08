@@ -33,9 +33,29 @@ str(coffee)
 head(coffee)
 
 skimr::skim(coffee)
+
+coffee$altitude
 ```
 
-What does each row contain?
-Data types?
-Messy or tidy data?
+Checklist
+- What does each row contain?
+  
+- Are the data types correct?
+
+- Messy or tidy data? Which variables, if any, are untidy?
+
+Refer back to the codebook on github!
+
+First impressions?
+
+
+# Fixing data types
+
+Convert species and country of origin from character to factor variables
+
+```{r}
+
+```
+
+
 
