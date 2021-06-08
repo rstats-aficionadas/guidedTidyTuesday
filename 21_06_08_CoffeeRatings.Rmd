@@ -138,3 +138,22 @@ coffee %>%
 ```
 
 
+```{r}
+coffee %>% 
+  add_count(country_of_origin, name = "country_n") %>% 
+  filter(country_n > 100 & altitude_mean_meters < 5000 & total_cup_points > 50) %>% 
+  ggplot() +
+  aes(x = altitude_mean_meters, y = total_cup_points,
+      colour = country_of_origin) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal() +
+  labs(x = "average altitude in metres",
+       y = "total cup points",
+       title = "Total cup points by altitude and country of origin",
+       subtitle = 'I <3 coffee',
+       caption = "Data source: Tidy Tuesday",
+       colour = "country of origin") 
+  
+```
+
