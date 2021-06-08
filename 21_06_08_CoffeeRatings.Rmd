@@ -65,4 +65,20 @@ str(coffee)
 ```
 
 
+# Plots
+
+Cup points by altitude
+total_cup_points
+altitude_mean_meters
+
+Scatterplot (geom_point)
+x-axis: altitude_mean_meters
+y-axis: total_cup_points
+
+
+```{r}
+
+```
+
+
 
