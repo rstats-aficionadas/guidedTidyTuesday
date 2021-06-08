@@ -5,6 +5,8 @@ date: "08 06 2021"
 output: html_document
 ---
 
+Welcome!
+
 Data source: https://github.com/rfordatascience/tidytuesday/blob/2e9bd5a67e09b14d01f616b00f7f7e0931515d24/data/2020/2020-07-07/readme.md
 
 Let's read in the data and get a first impression! The Tidy Tuesday site includes a link to read in the data and information on the variables. 
