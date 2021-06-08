@@ -54,7 +54,14 @@ First impressions?
 Convert species and country of origin from character to factor variables
 
 ```{r}
+coffee %>% 
+  mutate(species = as_factor(species),
+         country_of_origin = as_factor(country_of_origin))
 
+coffee <- coffee %>% 
+  mutate(across(c(country_of_origin, species), as_factor))
+
+str(coffee)
 ```
 
 
