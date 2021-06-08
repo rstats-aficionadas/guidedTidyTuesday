@@ -78,10 +78,15 @@ y-axis: total_cup_points
 
 ```{r}
 coffee %>% 
-  filter(altitude_mean_meters < 50000) %>% 
+  filter(altitude_mean_meters < 5000 & total_cup_points > 50) %>% 
   ggplot() +
-  aes(x = altitude_mean_meters, y = total_cup_points) +
-  geom_point()
+  aes(x = altitude_mean_meters, y = total_cup_points,
+      colour = species) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal() +
+  labs(x = "average altitude in metres",
+       y = "total cup points")
 ```
 
 
