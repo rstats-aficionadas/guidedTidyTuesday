@@ -16,6 +16,21 @@ Let's read in the data and get a first impression! The Tidy Tuesday site include
 
 ```{r}
 coffee <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-07/coffee_ratings.csv')
+
+library(tidyverse)
+```
+
+
+# Exploring the data
+
+```{r}
+summary(coffee)
+
+names(coffee)
+
+str(coffee)
+
+skimr::skim(coffee)
 ```
 
 
