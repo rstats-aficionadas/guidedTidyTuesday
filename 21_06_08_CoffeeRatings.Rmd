@@ -168,7 +168,11 @@ coffee %>%
 coffee %>% 
   ggplot() +
   aes(x = aroma, colour = species, fill = species) +
-  geom_density(alpha = 0.3)
+  geom_density(alpha = 0.3) +
+  theme_light() +
+  labs(title = "Aroma by coffee species") +
+  scale_fill_manual(values = c("seagreen", "steelblue")) +
+  scale_colour_manual(values = c("seagreen", "steelblue"))
 ```
 
 
