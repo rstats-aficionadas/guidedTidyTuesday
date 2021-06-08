@@ -67,17 +67,21 @@ str(coffee)
 
 # Plots
 
-Cup points by altitude
-total_cup_points
-altitude_mean_meters
+## Cup points by altitude
 
+Does coffee grown in higher/lower regions taste better?
+
+Cup points by altitude
 Scatterplot (geom_point)
 x-axis: altitude_mean_meters
 y-axis: total_cup_points
 
-
 ```{r}
-
+coffee %>% 
+  filter(altitude_mean_meters < 50000) %>% 
+  ggplot() +
+  aes(x = altitude_mean_meters, y = total_cup_points) +
+  geom_point()
 ```
 
 
