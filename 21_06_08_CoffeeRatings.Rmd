@@ -154,6 +154,23 @@ coffee %>%
        subtitle = 'I <3 coffee',
        caption = "Data source: Tidy Tuesday",
        colour = "country of origin") 
-  
+
+coffee %>% 
+  add_count(country_of_origin, name = "country_n") %>% 
+  select(country_of_origin, country_n) %>% 
+  distinct()
 ```
+
+
+## Histograms/density plots
+
+```{r}
+coffee %>% 
+  ggplot() +
+  aes(x = aroma, colour = species, fill = species) +
+  geom_density(alpha = 0.3)
+```
+
+
+
 
