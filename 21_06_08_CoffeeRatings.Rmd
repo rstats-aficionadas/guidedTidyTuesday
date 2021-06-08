@@ -30,7 +30,12 @@ names(coffee)
 
 str(coffee)
 
+head(coffee)
+
 skimr::skim(coffee)
 ```
 
+What does each row contain?
+Data types?
+Messy or tidy data?
 
