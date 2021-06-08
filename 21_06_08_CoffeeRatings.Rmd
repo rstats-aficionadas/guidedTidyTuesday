@@ -175,6 +175,18 @@ coffee %>%
   scale_colour_manual(values = c("seagreen", "steelblue"))
 ```
 
+## Boxplot
+
+```{r}
+ggplot(coffee) +
+  aes(x = species, y = sweetness,
+      colour = species) +
+  geom_violin() +
+  geom_boxplot(width = 0.3) +
+  geom_jitter(alpha = 0.4) +
+  theme_light() +
+  theme(legend.position = "bottom")
+```
 
 
 
