@@ -1,0 +1,20 @@
+---
+title: "Guided Tidy Tuesday - Voice interactions in Star Trek"
+author: "Julia Müller"
+date: "24 8 2021"
+output: html_document
+---
+
+# Exploring the data
+
+Download from the TidyTuesday Github:
+https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-08-17/readme.md
+
+```{r}
+library(tidyverse)
+
+computer <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-17/computer.csv')
+```
+
+Make sure to check out the codebook with much more information on what the categories mean here:
+http://www.speechinteraction.org/TNG/TeaEarlGreyHotDatasetCodeBook.pdf
