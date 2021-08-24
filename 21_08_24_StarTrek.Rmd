@@ -84,7 +84,7 @@ computer %>%
 - Are human characters more likely than the computer character(s) to do Conversational speech types?
 - Breakdown type/pri_type by person/by computer
 
-Primary type
+## Primary type/type computer vs person
 ```{r}
 computer %>% 
   mutate(type = str_to_title(type)) %>% 
@@ -102,9 +102,31 @@ computer %>%
   theme(legend.position = "none")
 ```
 
-
+## Type - people only
 ```{r}
+library(trekcolors)
 
+computer %>% 
+  mutate(type = str_to_title(type)) %>%
+  filter(char_type == "Person") %>% 
+  count(type) %>% 
+  mutate(type = fct_reorder(type, n),
+         perc = round(n/sum(n) * 100, 2),
+         perc_label = paste0(type, ": ", perc, "%"),
+         place = if_else(perc >= 30, 1, 0),
+         text_col = if_else(perc >= 30, "white", "black")) %>% 
+  ggplot() +
+  aes(x = type, y = perc, fill = type) +
+  geom_col() +
+  geom_text(aes(label = perc_label,
+                hjust = place)) +
+  coord_flip() +
+  theme_void() +
+  scale_fill_trek("klingon", reverse = TRUE) +
+  theme(legend.position = "none",
+        plot.title = element_text()) +
+  labs(title = "Interaction types",
+       subtitle = "Enterprise Computer only")
 ```
 
 
