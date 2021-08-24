@@ -21,12 +21,14 @@ computer <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytues
 ```
 
 ```{r}
-head(computer)
+head(computer, 20)
+
+str(computer)
 ```
 
 Questions:
 - name - what does that mean? Why is it a number?
-  
+  ID - ignore
 - Duplicates in line
   
 - Line vs interaction?
@@ -37,13 +39,52 @@ Questions:
   
 - nv_resp, is_fed, error
   
+Also: data types - what do we need to convert?
 
 ```{r}
 computer %>% 
-  count(char_type)
+  select(line, interaction)
 ```
-
-
 
 Make sure to check out the codebook with much more information on what the categories mean here:
 http://www.speechinteraction.org/TNG/TeaEarlGreyHotDatasetCodeBook.pdf
+
+
+## Convert to factors
+```{r}
+str(computer)
+
+summary(as_factor(computer$char))
+
+computer <- computer %>% 
+  mutate(across(c(char, type, pri_type, domain, sub_domain), as_factor))
+```
+
+
+# Analysis
+
+## Who's the most talkative person?
+```{r}
+computer %>% 
+  filter(char_type == "Person") %>% 
+  count(char, sort = TRUE)
+```
+
+
+## Tea, Earl Grey, hot - how often?
+How often is tea mentioned?
+
+```{r}
+computer %>% 
+  filter(str_detect(line, "\\b[Tt]ea\\b"))
+```
+
+
+# Graphs
+- Are human characters more likely than the computer character(s) to do Conversational speech types?
+- Breakdown type/pri_type by person/by computer
+
+
+
+
+
