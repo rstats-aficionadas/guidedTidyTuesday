@@ -87,11 +87,25 @@ computer %>%
 Primary type
 ```{r}
 computer %>% 
-  distinct(interaction, pri_type, .keep_all = TRUE) %>% 
+  mutate(type = str_to_title(type)) %>% 
+  #distinct(interaction, pri_type, .keep_all = TRUE) %>% 
   group_by(char_type) %>% 
-  count(pri_type)
+  count(type) %>% 
+  mutate(type = fct_reorder(type, n)) %>% 
+  ungroup() %>% 
+  ggplot() +
+  aes(x = type, y = n, fill = char_type) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  facet_wrap(~ char_type, scales = "free") +
+  theme_minimal() +
+  theme(legend.position = "none")
 ```
 
+
+```{r}
+
+```
 
 
 
