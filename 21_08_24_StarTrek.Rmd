@@ -6,6 +6,9 @@ output: html_document
 ---
 
 
+Welcome!
+
+
 # Exploring the data
 
 Download from the TidyTuesday Github:
