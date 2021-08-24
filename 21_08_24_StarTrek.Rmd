@@ -84,6 +84,13 @@ computer %>%
 - Are human characters more likely than the computer character(s) to do Conversational speech types?
 - Breakdown type/pri_type by person/by computer
 
+Primary type
+```{r}
+computer %>% 
+  distinct(interaction, pri_type, .keep_all = TRUE) %>% 
+  group_by(char_type) %>% 
+  count(pri_type)
+```
 
 
 
