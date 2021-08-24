@@ -102,7 +102,7 @@ computer %>%
   theme(legend.position = "none")
 ```
 
-## Type - people only
+## Interaction type - all people
 ```{r}
 library(trekcolors)
 
@@ -118,16 +118,74 @@ computer %>%
   ggplot() +
   aes(x = type, y = perc, fill = type) +
   geom_col() +
-  geom_text(aes(label = perc_label,
-                hjust = place)) +
+  geom_label(aes(label = perc_label,
+                hjust = place),
+             fill = "white") +
   coord_flip() +
   theme_void() +
   scale_fill_trek("klingon", reverse = TRUE) +
   theme(legend.position = "none",
-        plot.title = element_text()) +
+        plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) +
   labs(title = "Interaction types",
-       subtitle = "Enterprise Computer only")
+       subtitle = "Enterprise crewmembers") 
 ```
 
+
+## Interaction type - specific people
+```{r}
+computer %>% 
+  filter(char_type == "Person") %>% 
+  mutate(type = str_to_title(type),
+         char = fct_lump_n(char, n = 6),
+         char = fct_relevel(char)) %>% 
+  filter(char != "Other") %>% 
+  group_by(char) %>% 
+  count(type) %>% 
+  mutate(type = fct_reorder(type, n),
+         perc = round(n/sum(n) * 100, 2),
+         perc_label = paste0(type, ": ", perc, "%")) %>% 
+  ggplot() +
+  aes(x = type, y = perc, fill = type) +
+  geom_col() +
+  geom_text(aes(label = perc_label)) +
+  coord_flip() +
+  theme_void() +
+  scale_fill_trek("klingon", reverse = TRUE) +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) +
+  labs(title = "Interaction types",
+       subtitle = "Enterprise crewmembers") +
+  facet_wrap(~ char)
+```
+
+
+# Quick text analysis
+
+```{r}
+library(tidytext)
+
+computer %>% 
+  filter(char_type == "Person") %>% 
+  mutate(type = str_to_title(type),
+         char = fct_lump_n(char, n = 6)) %>% 
+  filter(char != "Other") %>% 
+  unnest_tokens(output = "word",
+                input = interaction,
+                token = "words") %>% 
+  anti_join(stop_words) %>% 
+  group_by(char) %>% 
+  count(word) %>% 
+  bind_tf_idf(word,
+              char,
+              n) %>% 
+  slice_max(order_by = tf_idf, n = 10, with_ties = FALSE) %>% 
+  ggplot() +
+  aes(word, tf_idf, fill = char) +
+  geom_col() +
+  coord_flip() +
+  facet_wrap(~ char, scales = "free")
+```
 
 
