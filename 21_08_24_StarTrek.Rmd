@@ -20,5 +20,30 @@ library(tidyverse)
 computer <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-17/computer.csv')
 ```
 
+```{r}
+head(computer)
+```
+
+Questions:
+- name - what does that mean? Why is it a number?
+  
+- Duplicates in line
+  
+- Line vs interaction?
+  
+- type vs pri_type
+  
+- domain vs subdomain
+  
+- nv_resp, is_fed, error
+  
+
+```{r}
+computer %>% 
+  count(char_type)
+```
+
+
+
 Make sure to check out the codebook with much more information on what the categories mean here:
 http://www.speechinteraction.org/TNG/TeaEarlGreyHotDatasetCodeBook.pdf
