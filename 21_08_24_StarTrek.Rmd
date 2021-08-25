@@ -125,10 +125,14 @@ computer %>%
 
 
 ## Speech types used by the crew members
-Bar graph of speech types where the category labels and percentages are inside the bars:
 ```{r}
 library(trekcolors) # colour palettes based on star trek colour schemes
+```
+More info:
+https://github.com/leonawicz/trekcolors
 
+Bar graph of speech types where the category labels and percentages are inside the bars:
+```{r}
 computer %>% 
   mutate(type = str_to_title(type)) %>%
   filter(char_type == "Person") %>% 
@@ -219,3 +223,14 @@ computer %>%
 
 
 # Links and resources
+
+Cédric Scherer's tutorial on labels inside of bars:
+https://www.cedricscherer.com/2021/07/05/a-quick-how-to-on-labelling-bar-graphs-in-ggplot2/
+
+Paper on this data: https://www.speechinteraction.org/TNG/AUTHORS_TeaEarlGreyHot_CHI2021.pdf
+
+Our previous meetups on text analysis:
+https://github.com/rladies/meetup-presentations_freiburg/tree/master/2020-07-Text_Analysis (explains tf-idf)
+https://github.com/rladies/meetup-presentations_freiburg/tree/master/2020-09-Sentiment_Analysis
+https://github.com/rladies/meetup-presentations_freiburg/tree/master/2021-06-22_TextAnalysis_ngrams
+
