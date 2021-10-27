@@ -38,7 +38,7 @@ pumpkins %>%
   summarize(weight_lbs = max(weight_lbs)) %>% 
   top_n(15) %>% 
   ggplot(aes(y = state_prov, x = weight_lbs, size = weight_lbs)) +
-  geom_point() +
+  geom_point(color = "#646464") +
   labs(
     x = NULL,
     y = NULL,
@@ -47,7 +47,13 @@ pumpkins %>%
   theme(
     panel.background = element_rect(fill = "#FCD1D6"),
     axis.line = element_line(color = "#CCF6B0", size = 3),
-    legend.position = "none"
+    legend.position = "none",
+    panel.grid = element_blank(),
+    axis.ticks = element_blank(),
+    plot.title = element_text(face = "bold", size = 14, margin = margin(15, 0, 15, 0)),
+    plot.title.position = "plot",
+    axis.text.y = element_text(face = "bold", hjust = 0),
+    axis.text.x = element_text(face = "bold", vjust = -2)
   )
 ```
 
