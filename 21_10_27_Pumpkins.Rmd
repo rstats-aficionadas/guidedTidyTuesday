@@ -31,3 +31,8 @@ pumpkins <- pumpkins %>%
   separate(id, c("year", "type"), sep="-")
 ```
 
+```{r}
+pumpkins %>% 
+  filter(type == "W" & country == "United States")
+```
+
