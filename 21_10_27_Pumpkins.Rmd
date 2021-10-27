@@ -72,12 +72,25 @@ pumpkins %>%
   group_by(country) %>% 
   summarise(weight_lbs = max(weight_lbs)) %>% 
   slice_max(order_by = weight_lbs, n = 10) %>% 
-  mutate(img,
-         country = fct_reorder(country, -weight_lbs)) %>% 
+  mutate(country = fct_reorder(country, -weight_lbs)) %>% 
   ggplot() +
   aes(y = country, x = weight_lbs) +
-  geom_image(aes(image = img),
-             asp = 1.5)
+  geom_image(aes(image = "pumpkin.png"),
+             asp = 1.5) +
+  labs(x = NULL,
+       y = NULL,
+       title = "Heaviest pumpkins grown by country",
+       subtitle = "...by weight in pounds",
+       caption = "Data source: Tidy Tuesday") +
+  scale_x_continuous(breaks = seq(995, 1000, by = 1)) +
+  theme(
+    plot.background = element_rect(fill = "#d4571d"),
+    panel.background = element_rect(fill = "white"),
+    text = element_text(face = "bold", colour = "black"),
+    axis.text = element_text(colour = "black"),
+    plot.margin = margin(1, 1, 1, 1, "cm"),
+    axis.ticks = element_blank()
+  )
 ```
 
 
