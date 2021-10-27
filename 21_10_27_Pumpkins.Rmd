@@ -27,7 +27,7 @@ pumpkins <- pumpkins %>%
 ```
 
 ```{r}
-pumpkins %>% 
+pumpkins <- pumpkins %>% 
   separate(id, c("year", "type"), sep="-")
 ```
 
