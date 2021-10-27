@@ -1,0 +1,20 @@
+---
+title: "Guided Tidy Tuesday: Giant pumpkins, watermelons & tomatoes"
+author: "Kyla McConnell & Julia Müller"
+date: "27 10 2021"
+output: html_document
+---
+
+
+
+```{r}
+library(tidyverse)
+
+pumpkins <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-19/pumpkins.csv')
+```
+
+More info on the data:
+https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-10-19/readme.md
+
+
+
