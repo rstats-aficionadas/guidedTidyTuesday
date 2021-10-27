@@ -57,3 +57,23 @@ pumpkins %>%
   )
 ```
 
+
+```{r}
+head(pumpkins)
+```
+
+```{r}
+library(ggimage)
+img <- "pumpkin.png"
+
+pumpkins %>% 
+  filter(type == "P") %>% 
+  drop_na(weight_lbs) %>% 
+  group_by(country) %>% 
+  summarise(weight_lbs = max(weight_lbs)) %>% 
+  slice_max(order_by = weight_lbs, n = 10) %>% 
+  ggplot() +
+  aes()
+```
+
+
