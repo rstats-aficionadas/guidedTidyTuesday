@@ -1,0 +1,21 @@
+---
+title: "Guided Tidy Tuesday (theme edition): R-Ladies Freiburg"
+author: "Kyla McConnell"
+date: "10/25/2021"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+
+pumpkins <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-19/pumpkins.csv')
+```
+
+![plot1_pumpkins](TT2110_pumpkins.jpg)
+
+![plot2_watermelon](TT2110_watermelon.jpg)
+
+
+
+
+
