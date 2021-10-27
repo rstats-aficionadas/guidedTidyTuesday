@@ -33,6 +33,9 @@ pumpkins <- pumpkins %>%
 
 ```{r}
 pumpkins %>% 
-  filter(type == "W" & country == "United States")
+  filter(type == "W" & country == "United States") %>% 
+  group_by(state_prov) %>% 
+  summarize(weight_lbs = max(weight_lbs)) %>% 
+  top_n(15)
 ```
 
