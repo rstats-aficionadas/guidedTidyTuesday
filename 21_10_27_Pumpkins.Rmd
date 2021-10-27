@@ -72,7 +72,7 @@ pumpkins %>%
   group_by(country) %>% 
   summarise(weight_lbs = max(weight_lbs)) %>% 
   slice_max(order_by = weight_lbs, n = 10) %>% 
-  mutate(img = "pumpkin.png",
+  mutate(img,
          country = fct_reorder(country, -weight_lbs)) %>% 
   ggplot() +
   aes(y = country, x = weight_lbs) +
