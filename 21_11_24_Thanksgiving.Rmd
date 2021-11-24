@@ -111,7 +111,7 @@ main +
 thanksgiving %>% 
   select(contains("pie")) 
 
-thanksgiving %>% 
+pie <- thanksgiving %>% 
   pivot_longer(
     cols = contains("pie"),
     names_to = "drop",
@@ -133,6 +133,14 @@ thanksgiving %>%
   scale_y_continuous(labels = scales::label_percent())
 ```
 
+```{r}
+pie +
+  labs(caption = "**Data source:** *FiveThirtyEight* via TidyTuesday",
+       title = "Top three pies eaten on Thanksgiving",
+       subtitle = "<span style ='color:#e78d1f'>**Pumpkin pie**</span> is the most popular option in all regions, <br>but <span style ='color:#922920'>**apple pie**</span> and <span style ='color:#6d431e'>**pecan pie**</span> are also popular (and delicious!)") +
+  theme(plot.caption = element_markdown(),
+        plot.subtitle = element_markdown())
+```
 
 
 
