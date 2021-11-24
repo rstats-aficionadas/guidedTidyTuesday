@@ -8,6 +8,8 @@ output: html_document
 
 ```{r}
 library(tidyverse)
+library(showtext)
+library(ggtext)
 
 thanksgiving <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/thanksgiving-2015/thanksgiving-2015-poll-data.csv')
 
@@ -63,6 +65,34 @@ main <- thanksgiving %>%
        fill = "Preparation method")
 ```
 
+## Theme options
+```{r}
+main <- main +
+  theme(panel.background = element_rect(fill = "#f7e0ac"),
+        plot.background = element_rect(fill = "#f7e0ac"),
+        legend.background = element_blank(),
+        legend.position = "top",
+        plot.caption = element_text(hjust = 0.5))
+```
+
+## Fonts
+```{r}
+font_add_google(name = "Satisfy", family = "satisfy")
+font_add_google(name = "Libre Baskerville", "libre")
+
+showtext_auto()
+```
+
+```{r}
+main +
+  theme(text = element_text(family = "libre"),
+        plot.title = element_text(family = "satisfy", size = 20, hjust = 0.5))
+```
+
+## Move title and legend in plot area
+```{r}
+
+```
 
 
 
