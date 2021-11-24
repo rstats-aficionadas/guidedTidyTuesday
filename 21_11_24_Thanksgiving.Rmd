@@ -1,0 +1,17 @@
+---
+title: "Guided Tidy Tuesday - Thanksgiving edition"
+author: "Julia Müller"
+date: "24 11 2021"
+output: html_document
+---
+
+
+```{r}
+library(tidyverse)
+
+thanksgiving <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/thanksgiving-2015/thanksgiving-2015-poll-data.csv')
+```
+
+Data originally from the FiveThirtyEight Github - more info on it here:
+https://github.com/fivethirtyeight/data/tree/master/thanksgiving-2015
+
