@@ -107,6 +107,31 @@ main +
 ```
 
 # Pies
+```{r}
+thanksgiving %>% 
+  select(contains("pie")) 
+
+thanksgiving %>% 
+  pivot_longer(
+    cols = contains("pie"),
+    names_to = "drop",
+    values_to = "pies",
+    values_drop_na = TRUE
+  ) %>% 
+  select(-drop) %>% 
+  drop_na(region) %>% 
+  group_by(region) %>% 
+  count(pies) %>% 
+  add_count(region, wt = n) %>% 
+  mutate(perc = n/nn) %>% 
+  slice_max(order_by = n, n = 3) %>% 
+  ggplot() +
+  aes(x = pies, y = perc, fill = pies) +
+  geom_col() + 
+  facet_wrap(~ region) +
+  scale_fill_manual(values = c("#922920", "#6d431e", "#e78d1f")) +
+  scale_y_continuous(labels = scales::label_percent())
+```
 
 
 
