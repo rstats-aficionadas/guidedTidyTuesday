@@ -29,5 +29,41 @@ thanksgiving <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data
 head(thanksgiving)
 ```
 
+Removing unnecessary columns
+```{r}
+thanksgiving <- thanksgiving %>% 
+  select(-contains("drop"))
+```
+
+Data types
+```{r}
+str(thanksgiving)
+
+thanksgiving <- thanksgiving %>% 
+  mutate(across(everything(), as_factor))
+```
+
+# Main dish
+```{r}
+summary(thanksgiving$main_dish)
+summary(thanksgiving$main_dish_method)
+
+main <- thanksgiving %>% 
+  drop_na(main_dish, main_dish_method) %>% 
+  filter(main_dish != "Other (please specify)" & main_dish != "I don't know" & main_dish_method != "Other (please specify)" & main_dish_method != "I don't know") %>% 
+  count(main_dish, main_dish_method) %>% 
+  ggplot() +
+  aes(x = main_dish, y = n, fill = main_dish_method) +
+  geom_col(position = "dodge") +
+  scale_fill_manual(values = c("#e78d1f", "#922920", "#6d431e")) +
+  theme_light() +
+  labs(x = "", y = "",
+       title = "Main dishes served on Thanksgiving and their preparation methods",
+       caption = "Data source: FiveThirtyEight via TidyTuesday",
+       fill = "Preparation method")
+```
+
+
+
 
 
