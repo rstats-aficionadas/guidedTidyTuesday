@@ -10,8 +10,24 @@ output: html_document
 library(tidyverse)
 
 thanksgiving <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/thanksgiving-2015/thanksgiving-2015-poll-data.csv')
+
+head(thanksgiving)
 ```
 
 Data originally from the FiveThirtyEight Github - more info on it here:
 https://github.com/fivethirtyeight/data/tree/master/thanksgiving-2015
+
+```{r}
+janitor::clean_names(thanksgiving)
+```
+
+```{r}
+thanksgiving <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/thanksgiving-2015/thanksgiving-2015-poll-data.csv',
+                         col_names = c("ID", "celebrate", "main_dish", "main_dish_other", "main_dish_method", "main_dish_method_other", "stuffing", "stuffing_other", "cranberry", "cranberry_other", "gravy", "side_brussels", "side_carrots", "side_cauliflower", "side_corn", "side_cornbread", "side_fruit_salad", "side_green_beans", "side_mac_cheese", "side_mashed_potatoes", "side_rolls_biscuits", "side_squash", "side_veg_salad", "side_yams", "drop1", "side_other", "pie_apple", "pie_buttermilk", "pie_cherry", "pie_chocolate", "pie_coconut", "pie_lime", "pie_peach", "pie_pecan", "pie_pumpkin", "pie_sweet_potato", "pie_none", "drop2", "pie_other", "dessert_apple_cobbler", "dessert_blondies", "dessert_brownies", "dessert_carrot_cake", "dessert_cheesecake", "dessert_cookies", "dessert_fudge", "dessert_icecream", "dessert_peach_cobbler", "dessert_none", "drop3", "dessert_other", "travel", "celebrate_where", "watch_Macys_parade", "kids_table_age", "meet_friends", "Friendsgiving", "Black_Friday_shop", "work_retail", "work_Black_Friday", "living_situation", "age", "gender", "combined_household_income", "region"),
+                         skip = 1)
+
+head(thanksgiving)
+```
+
+
 
